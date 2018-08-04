@@ -1,0 +1,20 @@
+{
+  "name": "07-rest-server-express",
+  "version": "1.0.0",
+  "description": "Express Rest Server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "nodemon server/server",
+    "test": "echo \"Negativo Manole: Pablito no ha hecho las pruebas, algún día...  ;)\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
+  }
+}
