@@ -11,13 +11,15 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 /**
  * Base de Datos
  */
-let urlDB;
+process.env.MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/db_cafe';
 
-    if (process.env.NODE_ENV === 'dev') {
-        urlDB = 'mongodb://localhost:27017/db_cafe';
-    } else {
-        urlDB = 'mongodb://cafe-user:Plcafe86@ds115022.mlab.com:15022/db_cafe';
-    }
+// let urlDB;
 
-process.env.MONGO_URL = urlDB;
+//     if (process.env.NODE_ENV === 'dev') {
+//         urlDB = 'mongodb://localhost:27017/db_cafe';
+//     } else {
+//         urlDB = process.env.MONGO_URI;
+//     }
+
+// process.env.MONGO_URL = urlDB;
 
