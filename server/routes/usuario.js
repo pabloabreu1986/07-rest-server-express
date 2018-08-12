@@ -1,13 +1,13 @@
+'use-strict';
+
 const express = require('express');
 const bcrypt = require('bcrypt');
 const _ = require('underscore');
 const app = express();
 const Usuario = require('../models/usuario');
+const {verificarToken, verificarAdminRole} = require('../middlewares/auth');
 
-
-
-
-app.get('/usuario', function (req, res) {
+app.get('/usuario', verificarToken, (req, res) => {
 
   let desde = Number(req.query.d) || 0;
   let paginado = Number(req.query.p) || 5;
@@ -32,7 +32,7 @@ app.get('/usuario', function (req, res) {
         });    
 });
   
-app.post('/usuario', function (req, res) {
+app.post('/usuario', [verificarToken,verificarAdminRole], (req, res) => {
   
     let body = req.body;
 
@@ -58,7 +58,7 @@ app.post('/usuario', function (req, res) {
     });  
 });
   
-app.put('/usuario/:id', function (req, res) {
+app.put('/usuario/:id', [verificarToken,verificarAdminRole], (req, res) => {
 
     let id = req.params.id;
 
@@ -81,7 +81,7 @@ app.put('/usuario/:id', function (req, res) {
     });
 });
   
-app.delete('/usuario/:id', function (req, res) {
+app.delete('/usuario/:id', [verificarToken,verificarAdminRole], (req, res) => {
 
   let id = req.params.id;
 
@@ -112,7 +112,6 @@ app.delete('/usuario/:id', function (req, res) {
       usuario: usuarioBorrado
     });
   });
-
 });
 
 module.exports = app;
