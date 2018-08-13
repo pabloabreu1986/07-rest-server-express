@@ -7,6 +7,8 @@ const app = express();
 const Usuario = require('../models/usuario');
 const {verificarToken, verificarAdminRole} = require('../middlewares/auth');
 
+
+//obtiene solo os usuarios activos (estado: true)
 app.get('/usuario', verificarToken, (req, res) => {
 
   let desde = Number(req.query.d) || 0;
@@ -81,6 +83,7 @@ app.put('/usuario/:id', [verificarToken,verificarAdminRole], (req, res) => {
     });
 });
   
+//no elimina, cambia el estado a falso
 app.delete('/usuario/:id', [verificarToken,verificarAdminRole], (req, res) => {
 
   let id = req.params.id;

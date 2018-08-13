@@ -29,6 +29,11 @@ process.env.CAD_TOKEN = 60 * 60 * 24 * 30;
 process.env.SEED = process.env.SEED || 'este-es-el-seed-de-desarrollo';
 
  /**************************
+ *     GOOGLE_CLIENT_ID     *
+  **************************/
+ process.env.CLIENT_ID = process.env.CLIENT_ID || '750164221683-djtuqs2ks4cpqe5bluap89ssokdsvk8n.apps.googleusercontent.com';
+
+ /**************************
  *     NAME_OF_SECTION      *
  *   ===================    *
  *         Item 1           *
