@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 const _ = require('underscore');
 const app = express();
-const Usuario = require('../models/usuario');
+const Usuario = require('../../models/usuario');
 const {OAuth2Client} = require('google-auth-library');
 const client = new OAuth2Client(process.env.CLIENT_ID);
 
@@ -59,6 +59,7 @@ async function verify(token) {
         // Or, if multiple clients access the backend:
         //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
     });
+    
     const payload = ticket.getPayload();
 
     return {
