@@ -3,16 +3,16 @@
 const express = require('express');
 const _ = require('underscore');
 const app = express();
-const Categoria = require('../../models/categoria');
+const Producto = require('../../models/producto');
 const {verificarToken} = require('../../middlewares/auth');
 
 
-// //obtiene una categoría por ID
-app.get('/categoria/:id', verificarToken, (req, res) => {
+//obtiene un producto por ID
+app.get('/producto/:id', verificarToken, (req, res) => {
 
     let id = req.params.id;
 
-  Categoria.findOne({_id: id, estado: true},'_id nombre descripcion nivel img' ,(err, categoria) => {
+  Producto.findOne({_id: id, estado: true}, '_id nombre calorias azucar sodio grasa carbo proteina img estado marca unidad cantidad usuario categoria', (err, producto) => {
 
     if (err) {
 
@@ -24,7 +24,7 @@ app.get('/categoria/:id', verificarToken, (req, res) => {
 
       res.json({
         OK: true,
-        categoria
+        producto
       });
 
   });    

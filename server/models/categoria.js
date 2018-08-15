@@ -5,17 +5,17 @@ const uniqueValidator = require('mongoose-unique-validator');
 
 let Schema = mongoose.Schema;
 
-let roles = {
-    values: ['ADMIN_ROLE', 'SUPER_ROLE', 'USER_ROLE'],
-    message: '{VALUE} IS NOT A VALID ROLE'
-}
 
 let categoriaSchema = new Schema({
     nombre:{
         type: String,
-        required: [true, 'nombre is required']
+        required: [true, 'nombre is required'],
+        unique: true
     },
-    usuario: mongoose.Schema.Types.ObjectId,
+    usuario: {
+        type: Schema.Types.ObjectId,
+        ref: 'Usuario'
+    },
     img:{
         type:String,
         required: false
@@ -35,16 +35,7 @@ let categoriaSchema = new Schema({
     }
 });
 
-categoriaSchema.methods.toJSON = function(){
-
-        let categoria = this;
-        let catObject = categoria.toObject();
-        //delete catObject.password;
-        
-    return catObject;
-}
-
-categoriaSchema.plugin(uniqueValidator, { message: 'Error, expected {PATH} to be unique.' });
+categoriaSchema.plugin(uniqueValidator, { message: 'Error, el {PATH} tiene que ser único.' });
 
 
 module.exports = mongoose.model('Categoria', categoriaSchema);

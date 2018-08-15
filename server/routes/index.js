@@ -17,6 +17,13 @@ app.use(require('./categoria/actualizar'));
 app.use(require('./categoria/eliminar'));
 app.use(require('./categoria/categoria'));
 
+//producto
+app.use(require('./producto/productos'));
+app.use(require('./producto/crear'));
+app.use(require('./producto/actualizar'));
+app.use(require('./producto/eliminar'));
+app.use(require('./producto/producto'));
+
 //login
 app.use(require('./login/login'));
 

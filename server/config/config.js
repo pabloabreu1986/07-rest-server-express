@@ -21,7 +21,7 @@ process.env.MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/db_c
  *   24 horas               *
  *   30 días                *
   **************************/
-process.env.CAD_TOKEN = 60 * 60 * 24 * 30 * 1000 ;
+process.env.CAD_TOKEN = '30d' ;
 
  /**************************
  *   SEED_DE_AUTENTICACIÓN  *

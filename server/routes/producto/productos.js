@@ -3,22 +3,22 @@
 const express = require('express');
 const _ = require('underscore');
 const app = express();
-const Categoria = require('../../models/categoria');
-const {verificarToken, verificarAdminRole} = require('../../middlewares/auth');
+const Producto = require('../../models/producto');
+const {verificarToken} = require('../../middlewares/auth');
 
-//obtiene solo las categorias activas (estado: true)
-app.get('/categorias', verificarToken, (req, res) => {
+//obtiene solo los productos activos (estado: true)
+app.get('/productos', verificarToken, (req, res) => {
 
     let desde = Number(req.query.d) || 0;
     let paginado = Number(req.query.p) || 50;
   
-    Categoria.find({estado: true}, '_id nombre nivel descripcion estado img')
+    Producto.find({estado: true}, '_id nombre calorias azucar sodio grasa carbo proteina img estado marca unidad cantidad usuario categoria')
           .skip(desde)
           .limit(paginado)
           .sort('nombre')//ordenar por un campo(nombre)
           .populate('usuario', 'nombre email')//adicionar los datos del usuario(nombre y email)
-        //.populate('esquema', 'campo1 campo2')//adicionar los datos del otro esquema(campo1 y campo2)
-          .exec((err, categorias) => {
+          .populate('categoria', 'nombre descripcion')
+          .exec((err, productos) => {
   
             if (err) {
               return res.status(400).json({
@@ -29,8 +29,8 @@ app.get('/categorias', verificarToken, (req, res) => {
                res.json({
                 OK: true,
                 RANGO: `${desde} - ${desde + paginado}`,
-                CANT: categorias.length,
-                categorias
+                CANT: productos.length,
+                productos
               });          
           });    
   });

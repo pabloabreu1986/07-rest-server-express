@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const _ = require('underscore');
 const app = express();
 const Usuario = require('../../models/usuario');
-const {verificarToken, verificarAdminRole} = require('../../middlewares/auth');
+const {verificarToken} = require('../../middlewares/auth');
 
 
 // //obtiene solo os usuarios activos (estado: true)

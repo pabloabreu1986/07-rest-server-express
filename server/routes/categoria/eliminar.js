@@ -15,6 +15,9 @@ app.delete('/categoria/:id', [verificarToken, verificarAdminRole], (req, res) =>
     let cambiaEstado = {
       estado: false
     }
+  //comprobar si ya no fué borrado
+  //verificar que no este en estado: false
+  //si está false responder que no existe
   
     Categoria.findByIdAndUpdate(id, cambiaEstado, {new: true}, (err, categoriaBorrada) => {
   
@@ -29,14 +32,14 @@ app.delete('/categoria/:id', [verificarToken, verificarAdminRole], (req, res) =>
         return res.status(404).json({
           DELETED: false,
           err:{
-            message: 'Categoría no encontra'
+            message: 'Categoría no encontrada'
           }
         });
       }
   
       res.json({
         DELETED: true,
-        categoria: categoriaBorrada
+        categoria: categoriaBorrada.nombre
       });
     });
   });
