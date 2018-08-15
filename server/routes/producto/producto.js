@@ -12,21 +12,23 @@ app.get('/producto/:id', verificarToken, (req, res) => {
 
     let id = req.params.id;
 
-  Producto.findOne({_id: id, estado: true}, '_id nombre calorias azucar sodio grasa carbo proteina img estado marca unidad cantidad usuario categoria', (err, producto) => {
+  Producto.findOne({_id: id, estado: true}, '_id nombre calorias azucar sodio grasa carbo proteina img estado marca unidad cantidad usuario categoria')
+          .populate('categoria', 'nombre')
+          .populate('usuario', 'nombre')
+          .exec( (err, producto) => {
 
-    if (err) {
+            if (err) {
 
-        return res.status(400).json({
-          OK: false,
-          err
-        });
-    };
+                return res.status(400).json({
+                  OK: false,
+                  err
+                });
+            };
 
       res.json({
         OK: true,
         producto
       });
-
   });    
 });
   

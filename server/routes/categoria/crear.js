@@ -34,7 +34,7 @@ app.post('/categoria', [verificarToken, verificarAdminRole], (req, res) => {
             });
           }
 
-        res.json({
+        res.status(201).json({
           CREATED: true,
           categoria: _.pick(categoriaDB,['_id','nombre','usuario','img', 'descripcion','nivel','estado'])
         });

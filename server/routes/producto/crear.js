@@ -44,7 +44,7 @@ app.post('/producto', verificarToken, (req, res) => {
             });
           }
 
-        res.json({
+        res.status(201).json({
           CREATED: true,
           producto: _.pick(productoDB, ['_id','nombre', 'calorias', 'azucar', 'sodio', 'grasa', 'carbo', 'proteina', 'img', 'estado', 'marca', 'unidad', 'cantidad', 'usuario', 'categoria'])
         });

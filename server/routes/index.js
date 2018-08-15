@@ -23,6 +23,7 @@ app.use(require('./producto/crear'));
 app.use(require('./producto/actualizar'));
 app.use(require('./producto/eliminar'));
 app.use(require('./producto/producto'));
+app.use(require('./producto/buscar'));
 
 //login
 app.use(require('./login/login'));

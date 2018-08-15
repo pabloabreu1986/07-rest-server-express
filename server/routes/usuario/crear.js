@@ -27,7 +27,7 @@ app.post('/usuario', [verificarToken,verificarAdminRole], (req, res) => {
               err
             });
           }
-        res.json({
+        res.status(201).json({
           CREATED: true,
           usuario: _.pick(usuarioDB,['_id','nombre', 'email','img','role','estado','google'])
         });
