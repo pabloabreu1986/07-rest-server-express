@@ -22,6 +22,7 @@
                 }
             });
         }
+        //al relizar la validación se modifica el req y se le agrega el usuario
         req.usuario = decoded.usuario;
         next();
     });
