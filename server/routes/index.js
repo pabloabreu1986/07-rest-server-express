@@ -16,6 +16,7 @@ app.use(require('./categoria/crear'));
 app.use(require('./categoria/actualizar'));
 app.use(require('./categoria/eliminar'));
 app.use(require('./categoria/categoria'));
+app.use(require('./categoria/buscar'));
 
 //producto
 app.use(require('./producto/productos'));
