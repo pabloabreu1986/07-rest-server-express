@@ -8,7 +8,7 @@ let Schema = mongoose.Schema;
 let unidad = {
     values: ['U', 'GR', 'KG'],
     message: '{VALUE} NO ES UNA UNIDAD VÁLIDA'
-}
+};
 
 let productoSchema = new Schema({
     nombre:{
@@ -76,8 +76,6 @@ let productoSchema = new Schema({
     }
 });
 
-
 productoSchema.plugin(uniqueValidator, { message: 'Error, el {PATH} tiene que ser único.' });
-
 
 module.exports = mongoose.model('Producto', productoSchema);

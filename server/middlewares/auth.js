@@ -1,13 +1,12 @@
 'use-strict';
 
- const jwt = require('jsonwebtoken');
- const Usuario = require('../models/usuario');
+const jwt = require('jsonwebtoken');
+const Usuario = require('../models/usuario');
 
- 
- /**************************
- *     VERIFICAR_TOKEN      *
-  **************************/
- let verificarToken = (req, res, next) => {
+/**************************
+*     VERIFICAR_TOKEN      *
+ **************************/
+let verificarToken = (req, res, next) => {
 
     let token = req.get('Authorization');
 
@@ -26,30 +25,28 @@
         req.usuario = decoded.usuario;
         next();
     });
- };
+};
 
-
-
- /**************************
- *   VERIFICAR_ADMIN_ROLE   *
-  **************************/
- let verificarAdminRole = (req, res, next) => {
+/**************************
+*   VERIFICAR_ADMIN_ROLE   *
+ **************************/
+let verificarAdminRole = (req, res, next) => {
 
     let usuario= req.usuario;
 
    if (usuario.role === 'ADMIN_ROLE') {
        next();
    } else {
-    return res.status(401).json({
-        OK: false,
-        err:{
-            message: 'El USUARIO NO TIENE PRIVILEGIOS'
-        }
-    });
-   }
- };
+        return res.status(401).json({
+            OK: false,
+            err:{
+                message: 'El USUARIO NO TIENE PRIVILEGIOS'
+            }
+        });
+   };
+};
 
- module.exports = {
-     verificarToken,
-     verificarAdminRole
- }
+module.exports = {
+    verificarToken,
+    verificarAdminRole
+};

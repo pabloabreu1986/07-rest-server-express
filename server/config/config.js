@@ -16,10 +16,7 @@ process.env.MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/db_c
  /**************************
  *  VENCIMIENTO_DEL_TOKEN   *
  *  =====================   *
- *   60 segundos            *
- *   60 minutos             *
- *   24 horas               *
- *   30 días                *
+ *   30 Días                *
   **************************/
 process.env.CAD_TOKEN = '30d' ;
 
@@ -39,5 +36,3 @@ process.env.SEED = process.env.SEED || 'este-es-el-seed-de-desarrollo';
  *         Item 1           *
  *         Item 2           *
   **************************/
-
-

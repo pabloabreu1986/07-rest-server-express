@@ -5,7 +5,6 @@ const uniqueValidator = require('mongoose-unique-validator');
 
 let Schema = mongoose.Schema;
 
-
 let categoriaSchema = new Schema({
     nombre:{
         type: String,
@@ -36,6 +35,5 @@ let categoriaSchema = new Schema({
 });
 
 categoriaSchema.plugin(uniqueValidator, { message: 'Error, el {PATH} tiene que ser único.' });
-
 
 module.exports = mongoose.model('Categoria', categoriaSchema);

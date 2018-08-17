@@ -29,5 +29,7 @@ app.use(require('./producto/buscar'));
 //login
 app.use(require('./login/login'));
 
+//files
+app.use(require('./upload'));
 
 module.exports = app;
