@@ -3,8 +3,7 @@
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const app = express();
-const Usuario = require('../models/usuario');
-const Producto = require('../models/producto');
+const { imagenProducto, imagenUsuario } = require('./util/imagenes');
 
 app.use(fileUpload());
 
@@ -44,19 +43,25 @@ app.put('/upload/:tipo/:id', (req, res) => {
     });
   }
 
+  // renombrar archivo para evitar colisiones
+  let nuevoNombre = `${id}-${new Date().getMilliseconds()}.${extencion}`;
+
   // mv() se usa para poner el arhcivo en algún lugar del servidor
-  archivo.mv(`uploads/${tipo}/${archivo.name}`, err => {
+  archivo.mv(`uploads/${tipo}/${nuevoNombre}`, err => {
     if (err) {
       return res.status(500).json({
         OK: false,
         err
       });
     }
-
-    res.json({
-      OK: true,
-      message: `El archivo: ${archivo.name} fue subido satisfactoriamente`
-    });
+    switch (tipo) {
+      case 'usuarios':
+        imagenUsuario(id, res, nuevoNombre);
+        break;
+      default:
+        imagenProducto(id, res, nuevoNombre);
+        break;
+    }
   });
 });
 

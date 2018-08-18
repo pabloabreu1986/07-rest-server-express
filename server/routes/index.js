@@ -30,6 +30,6 @@ app.use(require('./producto/buscar'));
 app.use(require('./login/login'));
 
 //files
-app.use(require('./upload'));
+app.use(require('./imagen/upload'));
 
 module.exports = app;
