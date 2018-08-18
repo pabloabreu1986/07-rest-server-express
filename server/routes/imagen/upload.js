@@ -3,7 +3,7 @@
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const app = express();
-const { imagenProducto, imagenUsuario } = require('./util/imagenes');
+const { imagenProducto, imagenUsuario } = require('./util/img-utility');
 
 app.use(fileUpload());
 

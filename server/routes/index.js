@@ -31,5 +31,6 @@ app.use(require('./login/login'));
 
 //files
 app.use(require('./imagen/upload'));
+app.use(require('./imagen/imagen'));
 
 module.exports = app;
