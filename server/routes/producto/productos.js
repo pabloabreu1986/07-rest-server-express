@@ -7,7 +7,7 @@ const Producto = require('../../models/producto');
 const { verificarToken } = require('../../middlewares/auth');
 
 //obtiene solo los productos activos (estado: true)
-app.get('/productos', verificarToken, (req, res) => {
+app.get('/productos', (req, res) => {
   let desde = Number(req.query.d) || 0;
   let paginado = Number(req.query.p) || 50;
 
