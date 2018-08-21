@@ -24,7 +24,7 @@ app.post('/login', (req, res) => {
     if (!usuarioDB) {
       return res.status(404).json({
         OK: false,
-        email: body.email + 'hola',
+        email: body.email,
         message: '(Usuario) o password no válido'
       });
     }
